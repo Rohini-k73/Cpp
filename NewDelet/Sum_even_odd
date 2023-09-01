@@ -1,0 +1,40 @@
+#include <stdio.h>
+//Sum of even odd numbers
+void sum(int[] , int);
+int main(){
+	int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    int i;
+    //int *a= (int*)malloc(sizeof(int) * size);
+    int* a = new int[size];
+    for (i = 0; i < size; i++) {
+        printf("Enter element %d of the array: ", i + 1);
+        scanf("%d", &a[i]);
+    }
+	sum(a, size);
+	
+	return 0;
+} 
+void sum(int*a , int size){
+
+    int sum_even=0;
+    int sum_odd=0;
+    int i;
+
+    for (i = 0; i < size; i++) {
+        if (a[i] % 2 == 0)
+            sum_even = sum_even + a[i];
+    }
+    
+    for ( i = 0; i < size; i++) {
+        if (a[i] % 2 != 0)
+           sum_odd = sum_odd + a[i];
+    }
+    
+    delete[]a;
+    printf("Sum of even numbers %d\n", sum_even);
+    printf("Sum of odd numbers %d \n", sum_odd);
+    
+}
