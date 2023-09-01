@@ -1,0 +1,32 @@
+#include <stdio.h>
+//even odd
+int main() {
+    int size,i;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+//    int a[size], i;
+//    int *a = (int *)malloc(size * sizeof(int));
+	int* a = new int [size];
+
+    for (i = 0; i < size; i++) {
+        printf("Enter element %d of the array: ", i + 1);
+        scanf("%d", &a[i]);
+    }
+
+    // Print all the even numbers
+    printf("Even numbers in the array are: ");
+    for (i = 0; i < size; i++) {
+        if (a[i] % 2 == 0)
+            printf("%d ", a[i]);
+    }
+    // Print all the odd numbers
+    printf("\nOdd numbers in the array are: ");
+    for ( i = 0; i < size; i++) {
+        if (a[i] % 2 != 0)
+            printf("%d ", a[i]);
+    }
+//    free(a);
+	delete[]a;
+	
+	return 0;
+}
