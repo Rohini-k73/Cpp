@@ -1,0 +1,39 @@
+#include <stdio.h>
+//search element in array
+int main() {
+    int size, i;
+    int tosearch, flag=0;
+
+    printf("Enter a size of the array: "); // size
+    scanf("%d", &size);
+
+//	int *a = (int *)malloc(size * sizeof(int));
+
+	int* a = new int [size];
+    for (i = 0; i < size; i++) {
+        printf("Enter element %d: ", i + 1); // elements
+        scanf("%d", &a[i]);
+    }
+
+	printf("Enter element to search :");
+	scanf("%d" , &tosearch);
+
+    for (i = 0; i < size; i++){
+    		if(a[i]==tosearch)
+    		{
+    			flag=1;
+    			break;
+			}
+	}
+		if(flag==0)
+		printf("Not found");
+		
+		else
+		printf("%d found at %d", tosearch,i);
+		
+		delete[]a;
+		
+		return 0;
+	
+}
+
