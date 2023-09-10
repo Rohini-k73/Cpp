@@ -1,0 +1,39 @@
+#include <stdio.h>
+// sum and averg of array
+// Function prototype
+void sum_avg(int*, int);
+
+int main() {
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    int i;
+    //int *a= (int*)malloc(sizeof(int) * size);
+    
+    int* a = new int[size];
+
+    for (i = 0; i < size; i++) {
+        printf("Enter element %d of the array: ", i + 1);
+        scanf("%d", &a[i]);
+    }
+
+    sum_avg(a, size); // Call the sum_avg function
+	
+	return 0;
+
+}
+
+void sum_avg(int* a, int size) {
+    int avg, sum = 0, i;
+
+    for (i = 0; i < size; i++) {
+        sum = sum + a[i];
+    }
+
+
+    avg = sum / size;
+    delete[]a;
+    printf("Sum of array is %d\n", sum);
+    printf("Average of array is %d\n", avg);
+}
