@@ -1,0 +1,115 @@
+	using namespace std;
+	#include<iostream>
+	struct Distance
+	{
+		int inch;
+		int feet;
+		
+		Distance(){
+			inch=0;
+			feet=0;
+		}
+		Distance(int inch, int feet){
+			this->inch = inch;
+			this->feet = feet;
+		}
+		
+		void setInch(int a){
+			this->inch = a;
+		}
+		void setFeet(int b){
+			this->feet = b;
+		}
+		
+		int getInch(){
+			return inch;
+		}
+		int getFeet(){
+			return feet;
+		}
+		
+		//relational operators overloading
+		int operator>(Distance c){
+			if(this->getInch() > c.getInch())
+				return 1;
+			else
+				return 0;
+		}
+		int operator<(Distance c){
+			if(this->getInch() < c.getInch())
+				return 1;
+			else
+				return 0;
+		}
+		int operator>=(Distance c){
+			if(this->getInch() >= c.getInch())
+				return 1;
+			else
+				return 0;
+		}
+		int operator<=(Distance c){
+			if(this->getInch() <= c.getInch())
+				return 1;
+			else
+				return 0;
+		}
+		int operator==(Distance c){
+			if((this->getInch() == c.getInch()) && (this->getFeet() == c.getFeet()))
+				return 1;
+			else
+				return 0;
+		}
+		int operator!=(Distance c){
+			if((this->getInch() != c.getInch() ) || (this->getFeet() != c.getFeet()))
+				return 1;
+			else
+				return 0;
+		}
+		void display(){
+			cout<<"Distance is: "<<inch<<" + "<<feet<<"i\n";
+		}
+	};
+	
+int main() {
+    Distance d1(5, 9);
+    Distance d2(5, 9);
+
+    cout << "Comparing distances:\n";
+    if (d1 > d2) {
+        cout << "d1 is greater\n";
+    } else {
+        cout << "d2 is greater\n";
+    }
+
+    if (d1 < d2) {
+        cout << "d1 is less\n";
+    } else {
+        cout << "d2 is less\n";
+    }
+
+    if (d1 >= d2) {
+        cout << "d1 is greater or both are equal\n";
+    } else {
+        cout << "d2 is greater or both are equal\n";
+    }
+
+    if (d1 <= d2) {
+        cout << "d1 is less or both are equal\n";
+    } else {
+        cout << "d2 is less or both are equal\n";
+    }
+
+    if (d1 == d2) {
+        cout << "both are equal\n";
+    } else {
+        cout << "both are not equal\n";
+    }
+
+    if (d1 != d2) {
+        cout << "both are not equal\n";
+    } else {
+        cout << "both are equal\n";
+    }
+
+    return 0;
+}
