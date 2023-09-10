@@ -1,0 +1,69 @@
+#include <iostream>
+//distance
+using namespace std;
+
+struct Distance {
+    int inch;
+    int feet;
+
+    Distance() {
+        inch = 0;
+        feet = 0;
+    }
+    Distance(int inch, int feet) {
+        this->inch = inch;
+        this->feet = feet;
+    }
+
+    // Overload the bitwise AND operator (&)
+    Distance operator&(const Distance& other) {
+        Distance result;
+        result.inch = this->inch & other.inch;
+        result.feet = this->feet & other.feet;
+        return result;
+    }
+
+    // Overload the bitwise OR operator (|)
+    Distance operator|(const Distance& other) {
+        Distance result;
+        result.inch = this->inch | other.inch;
+        result.feet = this->feet | other.feet;
+        return result;
+    }
+
+    // Overload the bitwise XOR operator (^)
+    Distance operator^(const Distance& other) {
+        Distance result;
+        result.inch = this->inch ^ other.inch;
+        result.feet = this->feet ^ other.feet;
+        return result;
+    }
+
+    // Display function
+    void display() {
+        cout << "Distance number: " << inch << " + " << feet << "i" << endl;
+    }
+};
+
+int main() {
+    Distance d1(5, 9);
+    Distance d2(3, 6);
+    Distance result;
+
+    // Bitwise AND operation
+    result = d1 & d2;
+    cout << "Bitwise AND result: ";
+    result.display();
+
+    // Bitwise OR operation
+    result = d1 | d2;
+    cout << "Bitwise OR result: ";
+    result.display();
+
+    // Bitwise XOR operation
+    result = d1 ^ d2;
+    cout << "Bitwise XOR result: ";
+    result.display();
+
+    return 0;
+}
