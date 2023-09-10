@@ -1,0 +1,56 @@
+#include <iostream>
+
+using namespace std;
+
+struct Distance {
+    int inch;
+    int feet;
+
+    Distance() {
+        inch = 0;
+        feet = 0;
+    }
+    Distance(int inch, int feet) {
+        this->inch = inch;
+        this->feet = feet;
+    }
+
+    // Logical AND operator (considering non-zero as true)
+    bool operator&&(const Distance& other) const {
+        return (this->inch && other.inch) && (this->feet && other.feet);
+    }
+
+    // Logical OR operator (considering non-zero as true)
+    bool operator||(const Distance& other) const {
+        return (this->inch || other.inch) || (this->feet || other.feet);
+    }
+
+    // Logical NOT operator (considering non-zero as true)
+    bool operator!() const {
+        return !(this->inch || this->feet);
+    }
+
+    // Display function
+    void display() {
+        cout << "distance : " << inch << " + " << feet << "i" << endl;
+    }
+};
+
+int main() {
+    Distance d1(5, 9);
+    Distance d2(0, 0);
+
+    // Logical AND operation
+    bool logicalAnd = d1 && d2;
+    cout << "Logical AND: " << (logicalAnd ? "True" : "False") << endl;
+
+    // Logical OR operation
+    bool logicalOr = d1 || d2;
+    cout << "Logical OR: " << (logicalOr ? "True" : "False") << endl;
+
+    // Logical NOT operation
+    bool logicalNot = !d1;
+    cout << "Logical NOT: " << (logicalNot ? "True" : "False") << endl;
+
+    return 0;
+}
