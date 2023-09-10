@@ -1,0 +1,167 @@
+#include <iostream>
+using namespace std;
+
+struct Distance {
+    int inch;
+    int feet;
+
+    Distance() {
+        inch = 0;
+        feet = 0;
+    }
+
+    Distance(int inch, int feet) {
+        this->inch = inch;
+        this->feet = feet;
+    }
+
+    void setInch(int a) {
+        inch = a;
+    }
+
+    void setFeet(int b) {
+        feet = b;
+    }
+
+    int getInch() {
+        return inch;
+    }
+
+    int getFeet() {
+        return feet;
+    }
+
+    // Arithmetic operator overloading
+    // for addition
+    Distance operator+(int a) {
+        Distance ans;
+        ans.setInch(inch + a);
+        ans.setFeet(feet + a);
+        return ans;
+    }
+
+    Distance operator+(Distance d) {
+        Distance ans;
+        ans.setInch(inch + d.getInch());
+        ans.setFeet(feet + d.getFeet());
+        return ans;
+    }
+
+    // for subtraction
+    Distance operator-(int a) {
+        Distance ans;
+        ans.setInch(inch - a);
+        ans.setFeet(feet - a);
+        return ans;
+    }
+
+    Distance operator-(Distance d) {
+        Distance ans;
+        ans.setInch(inch - d.getInch());
+        ans.setFeet(feet - d.getFeet());
+        return ans;
+    }
+
+    // for multiplication
+    Distance operator*(int a) {
+        Distance ans;
+        ans.setInch(inch * a);
+        ans.setFeet(feet * a);
+        return ans;
+    }
+
+    Distance operator*(Distance d) {
+        Distance ans;
+        ans.setInch(inch * d.getInch());
+        ans.setFeet(feet * d.getFeet());
+        return ans;
+    }
+
+    // for Division
+    Distance operator/(int a) {
+        Distance ans;
+        ans.setInch(inch / a);
+        ans.setFeet(feet / a);
+        return ans;
+    }
+
+    Distance operator/(Distance d) {
+        Distance ans;
+        ans.setInch(inch / d.getInch());
+        ans.setFeet(feet / d.getFeet());
+        return ans;
+    }
+
+    void display() {
+        cout << "Distance is: " << inch << " inches and " << feet << " feet\n";
+    }
+};
+
+// Global operator overloads
+Distance operator+(int a, Distance d) {
+    Distance ans;
+    ans.setInch(a + d.getInch());
+    ans.setFeet(a + d.getFeet());
+    return ans;
+}
+
+Distance operator-(int a, Distance d) {
+    Distance ans;
+    ans.setInch(a - d.getInch());
+    ans.setFeet(a - d.getFeet());
+    return ans;
+}
+
+Distance operator*(int a, Distance d) {
+    Distance ans;
+    ans.setInch(a * d.getInch());
+    ans.setFeet(a * d.getFeet());
+    return ans;
+}
+
+Distance operator/(int a, Distance d) {
+    Distance ans;
+    ans.setInch(a / d.getInch());
+    ans.setFeet(a / d.getFeet());
+    return ans;
+}
+
+int main() {
+    Distance d1(5, 9);
+    Distance d2(5, 9);
+    Distance d3;
+
+    cout << "\nAdding:\n";
+    d3 = d1 + 10; // adding one integer
+    d3.display();
+    d3 = d1 + d2; // adding two complex object/variables;
+    d3.display();
+    d3 = 10 + d2; // adding one integer and one complex object/variables;
+    d3.display();
+
+    cout << "\nSubtracting:\n";
+    d3 = d1 - 10;
+    d3.display();
+    d3 = d1 - d2;
+    d3.display();
+    d3 = 10 - d2;
+    d3.display();
+
+    cout << "\nMultiplication:\n";
+    d3 = d1 * 10;
+    d3.display();
+    d3 = d1 * d2;
+    d3.display();
+    d3 = 10 * d2;
+    d3.display();
+
+    cout << "\nDivision:\n";
+    d3 = d1 / 10;
+    d3.display();
+    d3 = d1 / d2;
+    d3.display();
+    d3 = 10 / d2;
+    d3.display();
+
+    return 0;
+}
